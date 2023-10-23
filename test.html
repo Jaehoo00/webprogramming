@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    숫자 1: <input type="text" id="number1" value="9"> <br>
+    숫자 2: <input type="text" id="number2" value="6"> <br>
+    <input type="button" value="+" onclick="add()" class="button">
+    <input type="button" value="-" onclick="sub()" class="button">
+    <input type="button" value="*" onclick="mul()" class="button">
+    <input type="button" value="/" onclick="div()" class="button"> <br>
+    연산결과: <input type="text" id="result" value="">
+    <script>
+        var num1 = document.getElementById("number1").value;
+        var num2 = document.getElementById("number2").value;
+
+        function add(){
+            var sum = parseFloat(num1) + parseFloat(num2);
+            document.getElementById("result").value = sum;
+        }
+
+        function sub(){
+            var sum = parseFloat(num1) - parseFloat(num2);
+            document.getElementById("result").value = sum;
+        }
+
+        function mul(){
+            var sum = parseFloat(num1) * parseFloat(num2);
+            document.getElementById("result").value = sum;
+        }
+
+        function sub(){
+            var sum = parseFloat(num1)/parseFloat(num2);
+            document.getElementById("result").value = sum;
+        }
+
+
+    </script>
+    <style>
+        .button{
+          width: 50px;
+          height: 50px;  
+        }
+    </style>
+</body>
+</html>
