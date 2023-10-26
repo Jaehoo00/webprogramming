@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" id="table">
+        <tr>
+            <td>(1,1)셀</td>
+            <td>(1,2)셀</td>
+        </tr>
+        <tr>
+            <td>(2,1)셀</td>
+            <td>(2,2)셀</td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="add()">행 추가</button>
+    <button onclick="del()">행 삭제</button>
+    <script>
+        function add(){
+            const table = document.getElementById('table');
+
+            const newRow = table.insertRow(0);
+
+            const newCell1 = newRow.insertCell(0);
+            const newCell2 = newRow.insertCell(1);                                        
+ 
+            newCell1.innerText = '새로운 셀 (1,1)';
+            newCell2.innerText = '새로운 셀 (1,2)';
+        }
+
+        function del(){
+            const table = document.getElementById('table');
+
+            const newRow = table.deleteRow(0)
+        }
+    </script>
+</body>
+</html>
