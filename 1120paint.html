@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<style>
+    #myCanvas {
+        background-color: rgb(241, 239, 209);
+        border: 1px dotted blue;
+    }
+</style>
+
+<body>
+    <canvas id="myCanvas" width="600" height="400"></canvas>
+    <script>
+        let canvas = document.getElementById("myCanvas");
+        let context = canvas.getContext("2d");
+        let last_x = 0, last_y = 0;
+        let draw_mode = false;
+
+        function clearCanvas() {
+            context.clearRect(0, 0, canvas.width, canvas.height);
+        }
+
+        function updateLineWidth(value) {
+            context.lineWidth = value;
+        }
+
+        function updateColor(value) {
+            context.strokeStyle = value;
+        }
+
+        canvas.addEventListener("mousemove", function (event) {
+            if (!draw_mode) return;
+            let x = event.offsetX;
+            let y = event.offsetY;
+            context.lineTo(x, y);
+            context.stroke();
+            last_x = x;
+            last_y = y;
+        });
+
+        canvas.addEventListener("mousedown", function (event) {
+            last_x = event.offsetX;
+            last_y = event.offsetY;
+            context.beginPath();
+            context.moveTo(last_x, last_y);
+            draw_mode = true;
+        });
+
+        canvas.addEventListener("mouseup", function (event) {
+            draw_mode = false;
+        });
+
+        canvas.addEventListener("mouseout", function (event) {
+            draw_mode = false;
+        });
+    </script>
+    <br><button onclick="clearCanvas();">화면 지우기</button><br>
+    <label for="lineWidth">굵기:</label>
+    <input type="range" id="lineWidth" min="1" max="10" value="2" onchange="updateLineWidth(this.value)">
+    <br>
+    <label for="color">색상:</label>
+    <input type="color" id="color" value="#000000" onchange="updateColor(this.value)">
+</body>
+
+</html>
